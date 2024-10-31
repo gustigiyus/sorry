@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I'm Sorry!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-image: url("sorry1.jpg");
+        background-size: cover; /* Ensure the background image covers the whole area */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevent repeating the background image */
+      }
+      /* Modal styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 10; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+        justify-content: center; /* Center modal content */
+        align-items: center; /* Center modal content */
+      }
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        width: 90%; /* Set the width of the modal content to 90% */
+        max-width: 500px; /* Responsive max-width */
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center h-screen">
+    <div
+      class="bg-white bg-opacity-70 rounded-lg shadow-lg p-8 text-center max-w-md w-full"
+    >
+      <h1
+        class="text-2xl md:text-3xl font-bold text-pink-600 mb-6 animate__animated animate__fadeIn"
+      >
+        I apologize for the mistake I made. I didn't mean to hurt your feelings
+        🥺
+      </h1>
+
+      <div class="flex flex-col sm:flex-row justify-center">
+        <button
+          class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition duration-300 mb-4 sm:mb-0 sm:mr-4"
+          onclick="yesClick()"
+        >
+          Yes, I forgive you
+        </button>
+        <button
+          id="noButton"
+          class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300"
+          onclick="noClick()"
+        >
+          No, You hurt my feelings
+        </button>
+      </div>
+    </div>
+
+    <footer class="absolute bottom-0 w-full text-center p-4">
+      <p class="text-xs text-gray-500">&copy; 2024 Gusti Giustianto</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span onclick="closeModal()" class="close cursor-pointer text-red-500"
+          >&times;</span
+        >
+        <img
+          src="smile.jpg"
+          alt="Pop Up Image"
+          class="mb-4 w-3/4 md:w-80 h-auto mx-auto"
+        />
+        <p class="text-lg">Thank you for forgiving me :)</p>
+      </div>
+    </div>
+
+    <script>
+      function yesClick() {
+        document.getElementById("myModal").style.display = "flex"; // Show modal
+      }
+
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none"; // Hide modal
+      }
+
+      function noClick() {
+        const button = document.getElementById("noButton");
+        const randomX = Math.floor(Math.random() * (window.innerWidth - 150)); // 150 for button width
+        const randomY = Math.floor(Math.random() * (window.innerHeight - 50)); // 50 for button height
+        button.style.position = "absolute";
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+      }
+
+      // Close modal when clicking outside of it
+      window.onclick = function (event) {
+        const modal = document.getElementById("myModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
